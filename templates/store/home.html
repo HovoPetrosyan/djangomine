@@ -1,0 +1,46 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block title %}BeeShop | Home{% endblock title %}
+{% block content %}
+    <section class="py-5 text-center container">
+        <div class="row py-lg-3">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="h1 fw-bold">Search, Read, Buy, Review</h1>
+                <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi asperiores
+                    autem beatae cupiditate dicta error, eveniet modi natus placeat porro recusandae sit. Ad alias
+                    beatae, commodi dignissimos doloribus eligendi et illum iure laborum libero magni neque non nostrum
+                    obcaecati, porro possimus quaerat quas quia sed totam. Accusantium, culpa eius.</p>
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Make an account</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="pb-3 h5">All Products</div>
+            <div class="row row-colls-1 row-cols-sm-2 row-cols-md-5 g-3">
+                {% for product in products %}
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <a href="{{ product.get_absolute_url }}"><img class="img-fluid" src="{{ product.imageURL }}" alt=""></a>
+                                <p class="card-text"><a href="{{ product.get_absolute_url }}">{{ product.title|title }}</a></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    </div>
+                                    <small class="text-muted">֏ {{ product.price }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
